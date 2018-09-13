@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<title>Cardapio</title>
+</head>
+<body style="margin-left: 15px">
+	<h1>Escolha o seu prato</h1>
+	<br>
+	<br>
+	<br>
+	<p>Prato principal:</p>
+	<div class="form-check">
+		<input class="form-check-input" type="radio" name="exampleRadios"
+			id="rdmassa" value="option1" checked> <label
+			class="form-check-label" for="exampleRadios1"> Massa </label>
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="radio" name="exampleRadios"
+			id="rdcarne" value="option2"> <label class="form-check-label"
+			for="exampleRadios2"> Carne </label>
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="radio" name="exampleRadios"
+			id="rdpeixe" value="option3"> <label class="form-check-label"
+			for="exampleRadios3"> Peixe </label>
+	</div>
+	<br>
+	<br>
+	<br>
+	<p>Acompanhamentos:</p>
+	<div class="form-check">
+		<input class="form-check-input" type="checkbox" value=""
+			id="ckbsalada"> <label class="form-check-label"
+			for="defaultCheck1"> Salada </label>
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="checkbox" value=""
+			id="ckblegumes"> <label class="form-check-label"
+			for="defaultCheck1"> Legumes </label>
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="checkbox" value=""
+			id="ckbfarofa"> <label class="form-check-label"
+			for="defaultCheck1"> Farofa </label>
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="checkbox" value=""
+			id="ckbfritas"> <label class="form-check-label"
+			for="defaultCheck1"> Fritas </label>
+	</div>
+	<br>
+	<br>
+	<br>
+	<form>
+		<p>Convênio:</p>
+		<div class="form-row align-items-center">
+			<div class="col-auto my-1">
+				<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+
+				<select class="custom-select mr-sm-2" id="opt">
+					<option selected>Escolha...</option>
+					<option value="1">Placomp</option>
+					<option value="2">Abutua</option>
+					<option value="3">Google</option>
+					<option value="4">Prefeitura</option>
+				</select>
+			</div>
+			<div class="col-auto my-1">
+				<div class="custom-control custom-checkbox mr-sm-2">
+					<input type="checkbox" class="custom-control-input"
+						id="customControlAutosizing"> <label
+						class="custom-control-label" for="customControlAutosizing">Lembrar
+						minha escolha</label>
+				</div>
+			</div>
+		</div>
+	</form>
+	<p>Observações</p>
+	<div class="form-group">
+		<label for="exampleFormControlTextarea1"></label>
+		<textarea class="form-control-sm" id="exampleFormControlTextarea1"
+			rows="3"></textarea>
+	</div>
+	<input type="submit" id="btnenviar" name="Enviar" onclick="calcvalor()">
+	<br>
+	<br>
+	<br>
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary" data-toggle="modal"
+		data-target="#exampleModal" id="enviar">Enviar</button>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p id="principal">
+					<p>
+					<p id="principalVal">
+					<p>
+					<p id="acompanhamento">
+					<p>
+					<p id="acompanhamentoVal">
+					<p>
+					<p id="convenio">
+					<p>
+					<p id="convenioVal">
+					<p>
+					<p id="resultado">
+					<p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+	$(document).ready(function(){
+	    $("#enviar").click(function(){
+	    	var radioMassa, radioCarne, radioPeixe, checkSalada, checkLegumes, checkFarofa, checkFritas,opcao , valor = 0, vradio = 0, vcheck = 0, voption = 0, scheck = "", soption = "", sradio = "";
+	    	alert($("#w3s").attr("href"));
+	    	if ($("#radioMassa").attr("checked") == true) {
+				sradio = "Massa"
+				vradio += 12;
+				valor += 12;
+			} else if ($("#radioCarne").attr("checked") == true) {
+				sradio = "Carne";
+				vradio += 16;
+				valor += 16;
+			} else if ($("#radioPeixe").attr("checked") == true) {
+				sradio = "Peixe";
+				vradio += 18;
+				valor += 18;
+			}
+			if ($("#checkFarofa").attr("checked") == true) {
+				if (scheck.length == 0) {
+					scheck += "Farofa";
+				} else {
+					scheck += ", farofa";
+				}
+				vcheck += 8;
+				valor += 8;
+			}
+			if ($("#checkFritas").attr("checked") == true) {
+				if (scheck.length == 0) {
+					scheck += "Fritas";
+				} else {
+					scheck += ", fritas";
+				}
+				vcheck += 10;
+				valor += 10;
+			}
+			if ($("#checkLegumes").attr("checked") == true) {
+				if (scheck.length == 0) {
+					scheck += "Legumes";
+				} else {
+					scheck += ", legumes";
+				}
+				vcheck += 6;
+				valor += 6;
+			}
+			if ($("#checkSalada").attr("checked") == true) {
+				if (scheck.length == 0) {
+					scheck += "Salada";
+				} else {
+					scheck += ", salada";
+				}
+				vcheck += 4;
+				valor += 4;
+			}
+			scheck += ".";
+			if (opt.value == "1") {
+				soption = "Placomp."
+				voption = valor * 0.05;
+				valor = valor * 0.95;
+			} else if (opt.value == "2") {
+				soption = "Abutua."
+				voption = valor * 0.10;
+				valor = valor * 0.90;
+			} else if (opt.value == "3") {
+				soption = "Google."
+				voption = valor * 0.01;
+				valor = valor * 0.99;
+			} else if (opt.value == "4") {
+				soption = "Prefeitura."
+				voption = valor * 0.02;
+				valor = valor * 0.98;
+			}
+	    	$("#principal").text("Seu prato principal: " + sradio);
+			$("#principalval").text("Valor: "+ vradio.toFixed(2) + " reais.");
+			$("#acompanhamento").text("Seu acompanhamento: " + scheck);
+			$("#acompanhamentoval").text("Valor: " + vcheck.toFixed(2) + " reais.");
+			$("#convenio").text("Seu convenio: " + soption);
+			$("#convenioval").text("Te garantiu " + voption.toFixed(2) + " reais de desconto.");
+			$("#resultado").text("Valor total: " + valor.toFixed(2) + " reais.");
+	    });
+	});
+		function calcvalor() {
+			var radioMassa, radioCarne, radioPeixe, checkSalada, checkLegumes, checkFarofa, checkFritas,opcao , valor = 0, vradio = 0, vcheck = 0, voption = 0, scheck = "", soption = "", sradio = "";
+			radioMassa = document.getElementById("rdmassa");
+			radioCarne = document.getElementById("rdcarne");
+			radioPeixe = document.getElementById("rdpeixe");
+			checkFarofa = document.getElementById("ckbfarofa");
+			checkFritas = document.getElementById("ckbfritas");
+			checkLegumes = document.getElementById("ckblegumes");
+			checkSalada = document.getElementById("ckbsalada");
+			opcao = document.getElementById("opt");
+			if (radioMassa.checked == true) {
+				sradio = "Massa"
+				vradio += 12;
+				valor += 12;
+			} else if (radioCarne.checked == true) {
+				sradio = "Carne";
+				vradio += 16;
+				valor += 16;
+			} else if (radioPeixe.checked == true) {
+				sradio = "Peixe";
+				vradio += 18;
+				valor += 18;
+			}
+			if (checkFarofa.checked == true) {
+				if (scheck.length == 0) {
+					scheck += "Farofa";
+				} else {
+					scheck += ", farofa";
+				}
+				vcheck += 8;
+				valor += 8;
+			}
+			if (checkFritas.checked == true) {
+				if (scheck.length == 0) {
+					scheck += "Fritas";
+				} else {
+					scheck += ", fritas";
+				}
+				vcheck += 10;
+				valor += 10;
+			}
+			if (checkLegumes.checked == true) {
+				if (scheck.length == 0) {
+					scheck += "Legumes";
+				} else {
+					scheck += ", legumes";
+				}
+				vcheck += 6;
+				valor += 6;
+			}
+			if (checkSalada.checked == true) {
+				if (scheck.length == 0) {
+					scheck += "Salada";
+				} else {
+					scheck += ", salada";
+				}
+				vcheck += 4;
+				valor += 4;
+			}
+			scheck += ".";
+			if (opt.value == "1") {
+				soption = "Placomp."
+				voption = valor * 0.05;
+				valor = valor * 0.95;
+			} else if (opt.value == "2") {
+				soption = "Abutua."
+				voption = valor * 0.10;
+				valor = valor * 0.90;
+			} else if (opt.value == "3") {
+				soption = "Google."
+				voption = valor * 0.01;
+				valor = valor * 0.99;
+			} else if (opt.value == "4") {
+				soption = "Prefeitura."
+				voption = valor * 0.02;
+				valor = valor * 0.98;
+			}
+			$("#principal").append("Seu prato principal: " + sradio);
+			//document.getElementById("principal").innerHTML = "Seu prato principal: "
+			//		+ sradio;
+			$("#principalval").append("Valor: "+ vradio.toFixed(2) + " reais.");
+			$("#acompanhamento").append("Seu acompanhamento: " + scheck);
+			$("#acompanhamentoval").append("Valor: " + vcheck.toFixed(2) + " reais.");
+			$("#convenio").append("Seu convenio: " + soption);
+			$("#convenioval").append("Te garantiu " + voption.toFixed(2) + " reais de desconto.");
+			$("#resultado").append("Valor total: " + valor.toFixed(2) + " reais.");
+			//document.getElementById("principalVal").innerHTML = "Valor: "
+			//		+ vradio.toFixed(2) + " reais.";
+			//document.getElementById("acompanhamento").innerHTML = "Seu acompanhamento: "
+					//+ scheck;
+			//document.getElementById("acompanhamentoVal").innerHTML = "Valor: "
+					//+ vcheck.toFixed(2) + " reais.";
+			//document.getElementById("convenio").innerHTML = "Seu convenio: "
+					//+ soption;
+			//document.getElementById("convenioVal").innerHTML = "Te garantiu "
+					//+ voption.toFixed(2) + " reais de desconto.";
+			//document.getElementById("resultado").innerHTML = "Valor total: "
+					//+ valor.toFixed(2) + " reais.";
+			
+		}
+	</script>
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+</body>
+</html>
