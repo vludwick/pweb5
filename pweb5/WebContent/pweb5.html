@@ -140,21 +140,21 @@
 	$(document).ready(function(){
 	    $("#enviar").click(function(){
 	    	var radioMassa, radioCarne, radioPeixe, checkSalada, checkLegumes, checkFarofa, checkFritas,opcao , valor = 0, vradio = 0, vcheck = 0, voption = 0, scheck = "", soption = "", sradio = "";
-	    	alert($("#w3s").attr("href"));
-	    	if ($("#radioMassa").attr("checked") == true) {
+	    	
+	    	if ($("#rdmassa").attr("checked") == true) {
 				sradio = "Massa"
 				vradio += 12;
 				valor += 12;
-			} else if ($("#radioCarne").attr("checked") == true) {
+			} else if ($("#rdcarne").attr("checked") == true) {
 				sradio = "Carne";
 				vradio += 16;
 				valor += 16;
-			} else if ($("#radioPeixe").attr("checked") == true) {
+			} else if ($("#rdpeixe").attr("checked") == true) {
 				sradio = "Peixe";
 				vradio += 18;
 				valor += 18;
 			}
-			if ($("#checkFarofa").attr("checked") == true) {
+			if ($("#ckbfarofa").attr("checked") == true) {
 				if (scheck.length == 0) {
 					scheck += "Farofa";
 				} else {
@@ -163,7 +163,7 @@
 				vcheck += 8;
 				valor += 8;
 			}
-			if ($("#checkFritas").attr("checked") == true) {
+			if ($("#ckbfritas").attr("checked") == true) {
 				if (scheck.length == 0) {
 					scheck += "Fritas";
 				} else {
@@ -172,7 +172,7 @@
 				vcheck += 10;
 				valor += 10;
 			}
-			if ($("#checkLegumes").attr("checked") == true) {
+			if ($("#ckblegumes").attr("checked") == true) {
 				if (scheck.length == 0) {
 					scheck += "Legumes";
 				} else {
@@ -181,7 +181,7 @@
 				vcheck += 6;
 				valor += 6;
 			}
-			if ($("#checkSalada").attr("checked") == true) {
+			if ($("#ckbsalada").attr("checked") == true) {
 				if (scheck.length == 0) {
 					scheck += "Salada";
 				} else {
@@ -191,19 +191,19 @@
 				valor += 4;
 			}
 			scheck += ".";
-			if (opt.value == "1") {
+			if ($("#opt").val() == "1") {
 				soption = "Placomp."
 				voption = valor * 0.05;
 				valor = valor * 0.95;
-			} else if (opt.value == "2") {
+			} else if ($("#opt").val() == "2") {
 				soption = "Abutua."
 				voption = valor * 0.10;
 				valor = valor * 0.90;
-			} else if (opt.value == "3") {
+			} else if ($("#opt").val() == "3") {
 				soption = "Google."
 				voption = valor * 0.01;
 				valor = valor * 0.99;
-			} else if (opt.value == "4") {
+			} else if ($("#opt").val() == "4") {
 				soption = "Prefeitura."
 				voption = valor * 0.02;
 				valor = valor * 0.98;
@@ -217,7 +217,7 @@
 			$("#resultado").text("Valor total: " + valor.toFixed(2) + " reais.");
 	    });
 	});
-		function calcvalor() {
+		/*function calcvalor() {
 			var radioMassa, radioCarne, radioPeixe, checkSalada, checkLegumes, checkFarofa, checkFritas,opcao , valor = 0, vradio = 0, vcheck = 0, voption = 0, scheck = "", soption = "", sradio = "";
 			radioMassa = document.getElementById("rdmassa");
 			radioCarne = document.getElementById("rdcarne");
@@ -316,7 +316,7 @@
 			//document.getElementById("resultado").innerHTML = "Valor total: "
 					//+ valor.toFixed(2) + " reais.";
 			
-		}
+		}*/
 	</script>
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
