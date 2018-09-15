@@ -92,7 +92,6 @@
 		<textarea class="form-control-sm" id="exampleFormControlTextarea1"
 			rows="3"></textarea>
 	</div>
-	<input type="submit" id="btnenviar" name="Enviar" onclick="calcvalor()">
 	<br>
 	<br>
 	<br>
@@ -106,7 +105,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Resultado</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -130,31 +129,33 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
+						data-dismiss="modal">Fechar</button>
 				</div>
 			</div>
 		</div>
 	</div>
+	<br><br>
+	<p>Repositorio: <a href="https://github.com/vludwick/pweb5">https://github.com/vludwick/pweb5</a></p>
 	<script>
 	$(document).ready(function(){
 	    $("#enviar").click(function(){
+	    	
 	    	var radioMassa, radioCarne, radioPeixe, checkSalada, checkLegumes, checkFarofa, checkFritas,opcao , valor = 0, vradio = 0, vcheck = 0, voption = 0, scheck = "", soption = "", sradio = "";
 	    	
-	    	if ($("#rdmassa").attr("checked") == true) {
+	    	if ($("#rdmassa").is(":checked") == true) {
 				sradio = "Massa"
 				vradio += 12;
 				valor += 12;
-			} else if ($("#rdcarne").attr("checked") == true) {
+			} else if ($("#rdcarne").is(":checked") == true) {
 				sradio = "Carne";
 				vradio += 16;
 				valor += 16;
-			} else if ($("#rdpeixe").attr("checked") == true) {
+			} else if ($("#rdpeixe").is(":checked") == true) {
 				sradio = "Peixe";
 				vradio += 18;
 				valor += 18;
 			}
-			if ($("#ckbfarofa").attr("checked") == true) {
+			if ($("#ckbfarofa").is(":checked") == true) {
 				if (scheck.length == 0) {
 					scheck += "Farofa";
 				} else {
@@ -163,7 +164,7 @@
 				vcheck += 8;
 				valor += 8;
 			}
-			if ($("#ckbfritas").attr("checked") == true) {
+			if ($("#ckbfritas").is(":checked") == true) {
 				if (scheck.length == 0) {
 					scheck += "Fritas";
 				} else {
@@ -172,7 +173,7 @@
 				vcheck += 10;
 				valor += 10;
 			}
-			if ($("#ckblegumes").attr("checked") == true) {
+			if ($("#ckblegumes").is(":checked") == true) {
 				if (scheck.length == 0) {
 					scheck += "Legumes";
 				} else {
@@ -181,7 +182,7 @@
 				vcheck += 6;
 				valor += 6;
 			}
-			if ($("#ckbsalada").attr("checked") == true) {
+			if ($("#ckbsalada").is(":checked") == true) {
 				if (scheck.length == 0) {
 					scheck += "Salada";
 				} else {
@@ -209,114 +210,15 @@
 				valor = valor * 0.98;
 			}
 	    	$("#principal").text("Seu prato principal: " + sradio);
-			$("#principalval").text("Valor: "+ vradio.toFixed(2) + " reais.");
+			$("#principalVal").text("Valor: "+ vradio.toFixed(2) + " reais.");
 			$("#acompanhamento").text("Seu acompanhamento: " + scheck);
-			$("#acompanhamentoval").text("Valor: " + vcheck.toFixed(2) + " reais.");
+			$("#acompanhamentoVal").text("Valor: " + vcheck.toFixed(2) + " reais.");
 			$("#convenio").text("Seu convenio: " + soption);
-			$("#convenioval").text("Te garantiu " + voption.toFixed(2) + " reais de desconto.");
+			$("#convenioVal").text("Te garantiu " + voption.toFixed(2) + " reais de desconto.");
 			$("#resultado").text("Valor total: " + valor.toFixed(2) + " reais.");
+			
 	    });
 	});
-		/*function calcvalor() {
-			var radioMassa, radioCarne, radioPeixe, checkSalada, checkLegumes, checkFarofa, checkFritas,opcao , valor = 0, vradio = 0, vcheck = 0, voption = 0, scheck = "", soption = "", sradio = "";
-			radioMassa = document.getElementById("rdmassa");
-			radioCarne = document.getElementById("rdcarne");
-			radioPeixe = document.getElementById("rdpeixe");
-			checkFarofa = document.getElementById("ckbfarofa");
-			checkFritas = document.getElementById("ckbfritas");
-			checkLegumes = document.getElementById("ckblegumes");
-			checkSalada = document.getElementById("ckbsalada");
-			opcao = document.getElementById("opt");
-			if (radioMassa.checked == true) {
-				sradio = "Massa"
-				vradio += 12;
-				valor += 12;
-			} else if (radioCarne.checked == true) {
-				sradio = "Carne";
-				vradio += 16;
-				valor += 16;
-			} else if (radioPeixe.checked == true) {
-				sradio = "Peixe";
-				vradio += 18;
-				valor += 18;
-			}
-			if (checkFarofa.checked == true) {
-				if (scheck.length == 0) {
-					scheck += "Farofa";
-				} else {
-					scheck += ", farofa";
-				}
-				vcheck += 8;
-				valor += 8;
-			}
-			if (checkFritas.checked == true) {
-				if (scheck.length == 0) {
-					scheck += "Fritas";
-				} else {
-					scheck += ", fritas";
-				}
-				vcheck += 10;
-				valor += 10;
-			}
-			if (checkLegumes.checked == true) {
-				if (scheck.length == 0) {
-					scheck += "Legumes";
-				} else {
-					scheck += ", legumes";
-				}
-				vcheck += 6;
-				valor += 6;
-			}
-			if (checkSalada.checked == true) {
-				if (scheck.length == 0) {
-					scheck += "Salada";
-				} else {
-					scheck += ", salada";
-				}
-				vcheck += 4;
-				valor += 4;
-			}
-			scheck += ".";
-			if (opt.value == "1") {
-				soption = "Placomp."
-				voption = valor * 0.05;
-				valor = valor * 0.95;
-			} else if (opt.value == "2") {
-				soption = "Abutua."
-				voption = valor * 0.10;
-				valor = valor * 0.90;
-			} else if (opt.value == "3") {
-				soption = "Google."
-				voption = valor * 0.01;
-				valor = valor * 0.99;
-			} else if (opt.value == "4") {
-				soption = "Prefeitura."
-				voption = valor * 0.02;
-				valor = valor * 0.98;
-			}
-			$("#principal").append("Seu prato principal: " + sradio);
-			//document.getElementById("principal").innerHTML = "Seu prato principal: "
-			//		+ sradio;
-			$("#principalval").append("Valor: "+ vradio.toFixed(2) + " reais.");
-			$("#acompanhamento").append("Seu acompanhamento: " + scheck);
-			$("#acompanhamentoval").append("Valor: " + vcheck.toFixed(2) + " reais.");
-			$("#convenio").append("Seu convenio: " + soption);
-			$("#convenioval").append("Te garantiu " + voption.toFixed(2) + " reais de desconto.");
-			$("#resultado").append("Valor total: " + valor.toFixed(2) + " reais.");
-			//document.getElementById("principalVal").innerHTML = "Valor: "
-			//		+ vradio.toFixed(2) + " reais.";
-			//document.getElementById("acompanhamento").innerHTML = "Seu acompanhamento: "
-					//+ scheck;
-			//document.getElementById("acompanhamentoVal").innerHTML = "Valor: "
-					//+ vcheck.toFixed(2) + " reais.";
-			//document.getElementById("convenio").innerHTML = "Seu convenio: "
-					//+ soption;
-			//document.getElementById("convenioVal").innerHTML = "Te garantiu "
-					//+ voption.toFixed(2) + " reais de desconto.";
-			//document.getElementById("resultado").innerHTML = "Valor total: "
-					//+ valor.toFixed(2) + " reais.";
-			
-		}*/
 	</script>
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
